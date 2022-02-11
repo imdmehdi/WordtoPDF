@@ -22,6 +22,7 @@ namespace PDFWriter
                 var path1 = AppDomain.CurrentDomain.BaseDirectory;
                 var path2 = Environment.CurrentDirectory+ "\\1.docx";
                 var wordDocument = appWord.Documents.Open(path2);
+                wordDocument.SelectContentControlsByTitle("FIRLD")[1].Range.Text = "VALIETOBIND";//IF BIND DYNAMIC CONTENT
                 string pdfDocName = path1+"\\pdfDocument.pdf";
                 if (wordDocument != null)
                 {

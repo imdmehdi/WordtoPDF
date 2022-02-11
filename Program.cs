@@ -19,8 +19,10 @@ namespace PDFWriter
             if (appWord.Documents != null)
             {
                 //yourDoc is your word document
-                var wordDocument = appWord.Documents.Open("\\1.docx");
-                string pdfDocName = "\\pdfDocument.pdf";
+                var path1 = AppDomain.CurrentDomain.BaseDirectory;
+                var path2 = Environment.CurrentDirectory+ "\\1.docx";
+                var wordDocument = appWord.Documents.Open(path2);
+                string pdfDocName = path1+"\\pdfDocument.pdf";
                 if (wordDocument != null)
                 {
                     wordDocument.ExportAsFixedFormat(pdfDocName,

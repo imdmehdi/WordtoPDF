@@ -23,4 +23,10 @@
     <PackageReference Include="itext7" Version="7.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="a0.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

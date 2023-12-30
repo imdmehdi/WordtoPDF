@@ -15,7 +15,9 @@ if (appWord.Documents != null)
     //yourDoc is your word document
     //var path1 = AppDomain.CurrentDomain.BaseDirectory;
     var path2 = Environment.CurrentDirectory ;
-    var wordDocument = appWord.Documents.Open(path2 + "\\1.doc");
+    var wordDocument = appWord.Documents.Open(path2 + "\\1.docx");
+    //string oppath = path2 + "\\202.docx";
+    //wordDocument.Merge(path2 + "\\2.docx",oppath);
     //wordDocument.SelectContentControlsByTitle("FIRLD")[1].Range.Text = "VALIETOBIND";//IF BIND DYNAMIC CONTENT
     string pdfDocName = path2 + "\\pdfDocument.pdf";
     if (wordDocument != null)
@@ -25,10 +27,25 @@ if (appWord.Documents != null)
         wordDocument.Close();
     }
     appWord.Quit();
+    var appWord2 = new Application();
+
+    var wordDocument2 = appWord2.Documents.Open(path2 + "\\2.docx");
+    //string oppath = path2 + "\\202.docx";
+    //wordDocument.Merge(path2 + "\\2.docx",oppath);
+    //wordDocument.SelectContentControlsByTitle("FIRLD")[1].Range.Text = "VALIETOBIND";//IF BIND DYNAMIC CONTENT
+    string pdfDocName2 = path2 + "\\pdfDocument2.pdf";
+    if (wordDocument2 != null)
+    {
+        wordDocument2.ExportAsFixedFormat(pdfDocName2,
+        WdExportFormat.wdExportFormatPDF);
+        wordDocument2.Close();
+    }
+    appWord2.Quit();
     List<string> pathsObj = new List<string>();
     pathsObj.Add(pdfDocName);
-    pathsObj.Add(path2 + "\\a1.pdf");
-    pathsObj.Add(path2 + "\\a0.pdf");
+    pathsObj.Add(pdfDocName2);
+    //pathsObj.Add(path2 + "\\a1.pdf");
+    //pathsObj.Add(path2 + "\\a0.pdf");
     ManipulatePdf(pathsObj);
 }
 
